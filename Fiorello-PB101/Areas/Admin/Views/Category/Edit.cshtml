@@ -1,0 +1,22 @@
+﻿ @model CategoryEditVM
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!-- Basic Form Inputs card start -->
+<div class="card">
+    <div class="card-block">
+        <h4 class="sub-title">Category</h4>
+        <form class="forms-sample" method="post" asp-action="Edit">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input asp-for="Name" class="form-control" id="examampleInputUsername1" maxlength="100" placeholder="Category ...">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <button type="submit" class=" btn btn-primary mr-2">Submit</button>
+                <a class=" btn btn-light" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Basic Form Inputs card end -->

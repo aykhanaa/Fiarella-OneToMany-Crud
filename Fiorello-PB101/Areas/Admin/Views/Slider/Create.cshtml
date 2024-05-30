@@ -1,0 +1,24 @@
+﻿    @model SliderCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!-- Basic Form Inputs card start -->
+<div class="card">
+    <div class="card-block">
+        <h4 class="sub-title">Slider</h4>
+        <form class="forms-sample" method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <label for="exampleInputUsername1">Slider</label>
+                    <input  class="form-control" asp-for="Images" id="examampleInputUsername1" maxlength="100" placeholder="Category ...">
+                    <span asp-validation-for="Images" class="text-danger"></span>
+                </div>
+                <button type="submit" class=" btn btn-primary mr-2">Submit</button>
+                <a class=" btn btn-light" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Basic Form Inputs card end -->
+

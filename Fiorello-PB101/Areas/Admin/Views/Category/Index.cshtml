@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CategoryProductVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center">Categories</h2>
+            <div class="create-operation">
+                <a asp-action="Create" class="btn btn-success text-white"><i class="ti-plus"></i></a>
+            </div>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                    <li><i class="fa fa-minus minimize-card"></i></li>
+                    <li><i class="fa fa-refresh reload-card"></i></li>
+                    <li><i class="fa fa-trash close-card"></i></li>
+                </ul>   
+            </div>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Created date</th>
+                            <th>Products count</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="category-data">
+                                <td>@item.CategoryName</td>
+                                <td>@item.CreatedDate</td>
+                                <td>@item.ProductCount</td>
+                                <td><a class="btn btn-primary text-white"><i class="ti-info-alt"></i></a></td>
+                                <td><a class="btn btn-warning text-white" asp-action="Edit"asp-route-id="@item.Id"><i class="ti-pencil"></i></a></td>
+                                <form method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <td><button type="submit" class="btn btn-danger text-white"><i class="ti-trash"></i></button></td> 
+                                </form>
+                                <td><a class="btn btn-secondary text-white add-archive" data-id ="@item.Id"><i class="ti-archive"></i></a></td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section js{
+    <script src="~/js/archive.js"></script>
+}
+
+

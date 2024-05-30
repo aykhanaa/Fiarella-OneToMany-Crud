@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SliderVM>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center">Slider</h2>
+            <div class="create-operation">
+                <a asp-action="Create" class="btn btn-success text-white"><i class="ti-plus"></i></a>
+            </div>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                    <li><i class="fa fa-minus minimize-card"></i></li>
+                    <li><i class="fa fa-refresh reload-card"></i></li>
+                    <li><i class="fa fa-trash close-card"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/img/@item.Image" style="width:150px;height:100px" />
+                                </td>
+                                <td><a class="btn btn-primary text-white"><i class="ti-info-alt"></i></a></td>
+                                <td><a class="btn btn-warning text-white" asp-action="Edit" asp-route-id="@item.Id"><i class="ti-pencil"></i></a></td>
+                                <form method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <td><button type="submit" class="btn btn-danger text-white"><i class="ti-trash"></i></button></td>
+                                </form>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
